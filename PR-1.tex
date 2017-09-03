@@ -67,26 +67,26 @@ Implementar un TDA Lista Ordenada en lenguaje C, cuyos elementos sean punteros g
 Para la implementación, se debe considerar que los tipos \texttt{lista\_t} y \texttt{celda\_t} están definidos de la siguiente manera:
 
 \begin{verbatim}
-    typedef struct lista_ordenada {
-        unsigned int cantidad_elementos;
-        celda_t* primera_celda;
-    } *lista_t;
+typedef struct lista_ordenada {
+  unsigned int cantidad_elementos;
+  celda_t* primera_celda;
+} *lista_t;
 
-    typedef struct celda {
-        void *elemento;
-        celda_t *proxima_celda;
-    } celda_t;
+typedef struct celda {
+  void *elemento;
+  celda_t *proxima_celda;
+} celda_t;
 \end{verbatim}
+
 \section{TDA Trie}
 
-Implementar un TDA Trie en lenguaje C, cuyos nodos tienen como rótulo un \emph{caracter} (\texttt{char}), y almacenan adicionalmente un contador de tipo \emph{entero} (\texttt{int}). El trie debe implementarse manteniendo referencia a un nodo raíz, y considerando cada nodo del árbol como una estrutura que mantiene referencia al padre y una lista ordenada de nodos como hijos. La implementación debe proveer las operaciones:
+Implementar un TDA Trie en lenguaje C, cuyos nodos tienen como rótulo un \emph{caracter} (\texttt{char}), y almacenan adicionalmente un contador de tipo \emph{entero} (\texttt{int}). El trie debe implementarse manteniendo referencia a un nodo raíz, y considerando cada nodo del árbol como una estructura que mantiene referencia al padre y una lista ordenada de nodos como hijos. La implementación debe proveer las operaciones:
 
 \begin{enumerate}
 	
 	\item \texttt{trie\_t trie\_crear()} Retorna un nuevo trie vacío, esto es, con nodo raíz con rótulo nulo y contador en cero.
 	
-	\item \texttt{int insertar(trie\_t tr, char* str)} Inserta el string
-	\texttt{str} en el trie \texttt{tr}, inicializando el valor de contador asociado en uno. En caso de que el string ya se encuentre representado en el trie, aumenta el valor del contador asociado a dicho string en una unidad. Retorna verdadero si la inserción (o actualización) fue exitosa, falso en caso contrario.
+	\item \texttt{int insertar(trie\_t tr, char* str)} Inserta el string \texttt{str} en el trie \texttt{tr}, inicializando el valor de contador asociado en uno. En caso de que el string ya se encuentre representado en el trie, aumenta el valor del contador asociado a dicho string en una unidad. Retorna verdadero si la inserción (o actualización) fue exitosa, falso en caso contrario.
 
 	\item \texttt{int pertenece(trie\_t tr, char* str)} Retorna verdadero si el string \texttt{srt} pertenece al trie \texttt{tr}, falso en caso contrario.
 	
@@ -94,10 +94,9 @@ Implementar un TDA Trie en lenguaje C, cuyos nodos tienen como rótulo un \emph{
 
 	\item \texttt{int size(trie\_t tr)} Retona la cantidad de palabras almacenadas en el trie \texttt{tr}.
 	
-	\item \texttt{int eliminar(trie\_t tr, char* str)} Elimina el string \texttt{str} dentro del trie \texttt{tr}. Retorna verdadero en caso de operación existosa, y STR\_NO\_PER en caso contrario.
+	\item \texttt{int eliminar(trie\_t tr, char* str)} Elimina el string \texttt{str} dentro del trie \texttt{tr}, desalocando la memoria utilizada. Retorna verdadero en caso de operación existosa, y STR\_NO\_PER en caso contrario.
 		
-	\item \texttt{int eliminar(trie\_t tr)} Elimina todos los strings dentro del trie \texttt{tr}, desalocando la memoria utilizada, quedando el trie vacío. Retorna verdadero en caso de operación existosa, y TRIE\_VACIO en caso contrario.
-	
+	\item \texttt{int eliminar(trie\_t tr)} Elimina todos los strings dentro del trie \texttt{tr}, desalocando la memoria utilizada, quedando el trie vacío. Retorna verdadero en caso de operación existosa, y TRI\_VAC en caso contrario.
 	
 \end{enumerate}
 
@@ -106,7 +105,7 @@ Para la implementación, se deben considerar que los tipos \texttt{trie\_t} y \t
 \begin{verbatim}
 typedef struct trie {
   nodo_t raiz;
-} *trie_t;
+}*trie_t;
 
 typedef struct nodo {
   char rotulo;
@@ -114,6 +113,7 @@ typedef struct nodo {
   struct nodo * padre;
   lista_t hijos;
 } *nodo_t;
+
 \end{verbatim}
 
 \section{Programa Principal}
@@ -195,7 +195,7 @@ Toda comisión que no cumpla con los requerimientos, estará automáticamente de
 	\end{itemize}		
 	\item El archivo comprimido debe enviarse por e-mail, respetando el siguiente formato: 
 	\begin{itemize}
-		\item \textbf{Para:} \textit{gabriela.diaz@cs.uns.edu.ar}
+		\item \textbf{Para:} \textit{federico.joaquin@cs.uns.edu.ar}
 		\item \textbf{Asunto:} \textit{OC :: PR1 :: COM XX :: Apellido1 - Apellido2}
 		\item \textbf{Cuerpo del e-mail:} \\
 		\textit{Se adjunta Proyecto Nº 1, de la comisión XX: } \\
@@ -214,9 +214,7 @@ Toda comisión que no cumpla con los requerimientos, estará automáticamente de
 	\item La cátedra evaluará tanto el \textbf{diseño} e \textbf{implementación}
 	como la \textbf{documentación} y \textbf{presentación} del proyecto, y el cumpliemiento de \textbf{todas} las condiciones de entrega.
 	
-	\item Tanto para compilar el proyecto, como para verificar su funcionamiento,
-	se utilizará la máquina virtual “OCUNS” publicada en el sitio web de la
-	cátedra.
+	\item Tanto para compilar el proyecto, como para verificar su funcionamiento, se utilizará la máquina virtual “OCUNS” publicada en el sitio web de la cátedra.
 	
 \end{itemize}
 \end{document}
